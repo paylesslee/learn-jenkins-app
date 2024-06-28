@@ -20,9 +20,8 @@ pipeline {
                 '''     
             }
         stage('Test') {
-            steps {
-                echo "Test state" 
-            }
+            sh 'echo "index.html"'
+            
             
         }
         }
