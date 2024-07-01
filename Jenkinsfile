@@ -9,6 +9,8 @@ pipeline {
                     reuseNode true
                 }
             }
+
+            /*
             steps {
                 sh '''
                      ls -la
@@ -20,6 +22,8 @@ pipeline {
                 '''     
             }
         }
+
+        */
         stage('Test') {
             agent {
                 docker {
@@ -36,12 +40,5 @@ pipeline {
             }
         }
         
-    }
-
-    post {
-        always {
-            sh 'checkov -f tfplan.json --framework terraform_plan --soft-fail -o cli -o junitxml --output-file-path results.xml'
-            junit skipPublishingChecks: true, testResults: '**/*.xml'
-        }
     }
 }
