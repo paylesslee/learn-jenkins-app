@@ -35,10 +35,24 @@ pipeline {
                 sh '''
                     test -f build/index.html
                     npm test
-                    ls -la
                 '''
             }
         }
+        stage('E2E') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.45.0-jammy'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    npm install -g serve
+                    serve -s build
+                    npx paywright test
+                    
+                '''
+            }        
         
     }
 }
