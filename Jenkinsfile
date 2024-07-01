@@ -22,7 +22,7 @@ pipeline {
                 '''     
             }
         }
-*/
+        */
         
         stage('Test') {
             agent {
@@ -55,5 +55,5 @@ pipeline {
             }        
         
     }
-    
+
 }
