@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     stages {
+
+        /*
         stage('Build') {
             agent {
                 docker {
@@ -9,8 +11,6 @@ pipeline {
                     reuseNode true
                 }
             }
-
-            /*
             steps {
                 sh '''
                      ls -la
@@ -22,8 +22,8 @@ pipeline {
                 '''     
             }
         }
-
-        */
+*/
+        
         stage('Test') {
             agent {
                 docker {
