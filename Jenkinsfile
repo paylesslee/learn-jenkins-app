@@ -40,8 +40,8 @@ pipeline {
 
     post {
         always {
-            junit '**/test-reports/*.xml'
-            junit 'test-result/junit.xml'
+            sh 'checkov -f tfplan.json --framework terraform_plan --soft-fail -o cli -o junitxml --output-file-path results.xml'
+            junit skipPublishingChecks: true, testResults: '**/*.xml'
         }
     }
 }
